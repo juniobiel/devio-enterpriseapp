@@ -13,4 +13,14 @@
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Configuration\" />
+    <None Remove="Views\Identidade\" />
+    <None Remove="Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="Views\Identidade\" />
+    <Folder Include="Services\" />
+  </ItemGroup>
 </Project>
