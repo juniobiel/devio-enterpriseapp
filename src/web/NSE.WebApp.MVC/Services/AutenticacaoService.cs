@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using NSE.WebApp.MVC.Models;
 
@@ -6,14 +9,35 @@ namespace NSE.WebApp.MVC.Services
 {
     public class AutenticacaoService : IAutenticacaoService
     {
-        public Task<string> Login(UsuarioLogin usuarioLogin)
+        private readonly HttpClient _httpClient;
+
+        public AutenticacaoService(HttpClient httpClient)
         {
-            throw new NotImplementedException();
+            _httpClient = httpClient;
         }
 
-        public Task<string> Registro(UsuarioRegistro usuarioRegistro)
+        public async Task<string> Login(UsuarioLogin usuarioLogin)
         {
-            throw new NotImplementedException();
+            var loginContent = new StringContent(
+                JsonSerializer.Serialize(usuarioLogin),
+                Encoding.UTF8,
+                "application/json");
+
+            var response = await _httpClient.PostAsync("http://localhost:37719/api/identidade/autenticar", loginContent);
+
+            return JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
+        }
+
+        public async Task<string> Registro(UsuarioRegistro usuarioRegistro)
+        {
+            var registroContent = new StringContent(
+                JsonSerializer.Serialize(usuarioRegistro),
+                Encoding.UTF8,
+                "application/json");
+
+            var response = await _httpClient.PostAsync("http://localhost:37719/api/identidade/nova-conta", registroContent);
+
+            return JsonSerializer.Deserialize<string>(await response.Content.ReadAsStringAsync());
         }
     }
 }
