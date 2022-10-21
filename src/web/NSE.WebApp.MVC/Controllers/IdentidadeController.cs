@@ -12,7 +12,7 @@ using System.Collections.Generic;
 
 namespace NSE.WebApp.MVC.Controllers
 {
-    public class IdentidadeController : Controller
+    public class IdentidadeController : MainController
     {
         private readonly IAutenticacaoService _autenticacaoService;
 
@@ -35,6 +35,8 @@ namespace NSE.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(usuarioRegistro);
 
             var resposta = await _autenticacaoService.Registro(usuarioRegistro);
+
+            if (ResponsePossuiErros(resposta.ResponseResult)) return View(usuarioRegistro);
             await RealizarLogin(resposta);
 
             return RedirectToAction("Index", "Home");
@@ -47,6 +49,9 @@ namespace NSE.WebApp.MVC.Controllers
             if (!ModelState.IsValid) return View(usuarioLogin);
 
             var resposta = await _autenticacaoService.Login(usuarioLogin);
+
+            if (ResponsePossuiErros(resposta.ResponseResult)) return View(usuarioLogin);
+
             await RealizarLogin(resposta);
 
             return RedirectToAction("Index", "Home");
@@ -61,8 +66,10 @@ namespace NSE.WebApp.MVC.Controllers
 
         [HttpGet]
         [Route("sair")]
-        public IActionResult Logout()
+        public async Task<IActionResult> Logout()
         {
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+
             return RedirectToAction("Index", "Home");
         }
 

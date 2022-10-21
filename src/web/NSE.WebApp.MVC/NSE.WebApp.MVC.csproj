@@ -20,11 +20,13 @@
     <None Remove="Services\" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
     <None Remove="Extensions\" />
+    <None Remove="Views\Shared\Components\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configuration\" />
     <Folder Include="Views\Identidade\" />
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
+    <Folder Include="Views\Shared\Components\" />
   </ItemGroup>
 </Project>
