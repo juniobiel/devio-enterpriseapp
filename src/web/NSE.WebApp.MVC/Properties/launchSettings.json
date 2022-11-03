@@ -16,7 +16,13 @@
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
     },
-    "NSE.WebApp.MVC": {
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "environmentVariables": {}
+    },
+    "Self Hosting - Development": {
       "commandName": "Project",
       "launchBrowser": true,
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
@@ -24,12 +30,6 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation"
       }
-    },
-    "Docker": {
-      "commandName": "Docker",
-      "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
-      "environmentVariables": {}
     }
   }
 }
