@@ -14,20 +14,20 @@ namespace NSE.WebApp.MVC.Services
 
         public CatalogoService(HttpClient httpClient, IOptions<AppSettings> settings)
         {
-            httpClient.BaseAddress = new Uri("http://localhost:5001");
+            //httpClient.BaseAddress = new Uri("");
             _httpClient = httpClient;
         }
 
         public async Task<ProdutoViewModel> ObterPorId(Guid id)
         {
-            var response = await _httpClient.GetAsync($"/catalogo/produtos/{id}");
+            var response = await _httpClient.GetAsync($"http://localhost:37720/catalogo/produtos/{id}");
             TratarErrosResponse(response);
             return await DeserializarObjetoResponse<ProdutoViewModel>(response);
         }
 
         public async Task<IEnumerable<ProdutoViewModel>> ObterTodos()
         {
-            var response = await _httpClient.GetAsync("/catalogo/produtos/");
+            var response = await _httpClient.GetAsync("http://localhost:37720/catalogo/produtos/");
             TratarErrosResponse(response);
             return await DeserializarObjetoResponse<IEnumerable<ProdutoViewModel>>(response);
         }

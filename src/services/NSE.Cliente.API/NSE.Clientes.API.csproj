@@ -5,6 +5,7 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
     <AssemblyName>NSE.Cliente.API</AssemblyName>
+    <UserSecretsId>d1b70c68-4095-4fe6-9b2a-1ebcc6135ad9</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -13,6 +14,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <AssemblyName>NSE.Cliente.API</AssemblyName>
   </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Self Hosting Clientes - Development' " />
   <ItemGroup>
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />

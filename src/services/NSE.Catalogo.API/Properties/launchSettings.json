@@ -23,10 +23,10 @@
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/weatherforecast",
       "environmentVariables": {}
     },
-    "Self Hosting - Development": {
+    "Self Hosting Catalogo - Development": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "swagger",
       "applicationUrl": "http://localhost:37720",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
