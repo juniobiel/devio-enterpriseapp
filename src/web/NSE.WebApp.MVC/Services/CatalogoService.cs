@@ -20,14 +20,14 @@ namespace NSE.WebApp.MVC.Services
 
         public async Task<ProdutoViewModel> ObterPorId(Guid id)
         {
-            var response = await _httpClient.GetAsync($"http://localhost:37720/catalogo/produtos/{id}");
+            var response = await _httpClient.GetAsync($"https://localhost:44398/catalogo/produtos/{id}");
             TratarErrosResponse(response);
             return await DeserializarObjetoResponse<ProdutoViewModel>(response);
         }
 
         public async Task<IEnumerable<ProdutoViewModel>> ObterTodos()
         {
-            var response = await _httpClient.GetAsync("http://localhost:37720/catalogo/produtos/");
+            var response = await _httpClient.GetAsync("https://localhost:44398/catalogo/produtos/");
             TratarErrosResponse(response);
             return await DeserializarObjetoResponse<IEnumerable<ProdutoViewModel>>(response);
         }
