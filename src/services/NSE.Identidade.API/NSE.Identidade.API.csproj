@@ -30,7 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Configuration\" />
     <Folder Include="Extensions\" />
   </ItemGroup>
 
@@ -40,6 +39,7 @@
     <None Remove="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\NSE.MessageBus\NSE.MessageBus.csproj" />
     <ProjectReference Include="..\..\building blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>

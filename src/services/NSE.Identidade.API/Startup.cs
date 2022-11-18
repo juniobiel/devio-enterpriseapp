@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSE.Identidade.API.Configuration;
+using NSE.Identidade.API.Configurations;
 
 namespace NSE.Identidade.API
 {
@@ -32,6 +33,7 @@ namespace NSE.Identidade.API
             services.AddIdentityConfiguration(Configuration);
             services.AddApiConfiguration();
             services.AddSwaggerConfiguration();
+            services.AddMessageBusConfiguration(Configuration);
         }
 
         public void Configure( IApplicationBuilder app, IWebHostEnvironment env )

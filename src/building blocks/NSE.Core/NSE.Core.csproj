@@ -15,7 +15,6 @@
   <ItemGroup>
     <Folder Include="DomainObjects\" />
     <Folder Include="Data\" />
-    <Folder Include="Utils\" />
     <Folder Include="Messages\" />
     <Folder Include="Mediator\" />
     <Folder Include="Messages\Integration\" />

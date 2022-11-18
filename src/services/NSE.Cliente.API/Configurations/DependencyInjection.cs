@@ -21,8 +21,6 @@ namespace NSE.Clientes.API.Configurations
 
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<ClientesContext>();
-
-            services.AddHostedService<RegistroClienteIntegrationHandler>();
         }
     }
 }

@@ -52,7 +52,6 @@
     <Folder Include="Models\" />
     <Folder Include="Data\" />
     <Folder Include="Data\Mappings\" />
-    <Folder Include="Configurations\" />
     <Folder Include="Controllers\" />
     <Folder Include="Application\" />
     <Folder Include="Application\Commands\" />
@@ -65,6 +64,7 @@
     <ProjectReference Include="..\..\building blocks\NSE.Core\NSE.Core.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\..\building blocks\NSE.MessageBus\NSE.MessageBus.csproj" />
     <ProjectReference Include="..\..\building blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
