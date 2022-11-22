@@ -24,10 +24,21 @@ namespace NSE.Clientes.API.Services
 
         protected override Task ExecuteAsync( CancellationToken stoppingToken )
         {
+            SetResponder();
+            return Task.CompletedTask;
+        }
+
+        private void SetResponder()
+        {
             _bus.RespondAsync<UsuarioRegistradoIntegrationEvent, ResponseMessage>(async
                 request => await RegistrarCliente(request));
 
-            return Task.CompletedTask;
+            _bus.AdvancedBus.Connected += OnConnect;
+        }
+
+        private void OnConnect( object s, EventArgs e )
+        {
+            SetResponder();
         }
 
         private async Task<ResponseMessage> RegistrarCliente( UsuarioRegistradoIntegrationEvent message )

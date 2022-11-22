@@ -10,6 +10,7 @@ namespace NSE.MessageBus
     public class MessageBus : IMessageBus
     {
         private IBus _bus;
+        private IAdvancedBus _advancedBus;
         private readonly string _connectionString;
 
         public MessageBus( string connectionString )
@@ -19,6 +20,7 @@ namespace NSE.MessageBus
         }
 
         public bool IsConnected => _bus?.Advanced.IsConnected ?? false;
+        public IAdvancedBus AdvancedBus => _bus?.Advanced;
 
         public void Publish<T>( T message ) where T : IntegrationEvent
         {
@@ -43,6 +45,7 @@ namespace NSE.MessageBus
             TryConnect();
             _bus.PubSub.SubscribeAsync(subscriptionId, onMessage);
         }
+
         public TResponse Request<TRequest, TResponse>( TRequest request )
             where TRequest : IntegrationEvent
             where TResponse : ResponseMessage
@@ -75,31 +78,26 @@ namespace NSE.MessageBus
                 .Or<BrokerUnreachableException>()
                 .WaitAndRetry(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 
-            policy.Execute(() => { _bus = RabbitHutch.CreateBus(_connectionString); });
+            policy.Execute(() => 
+            { 
+                _bus = RabbitHutch.CreateBus(_connectionString);
+                _advancedBus = _bus.Advanced;
+                _advancedBus.Disconnected += OnDisconnect;
+            });
+        }
+
+        private void OnDisconnect(object s, EventArgs e)
+        {
+            var policy = Policy.Handle<EasyNetQException>()
+                .Or<BrokerUnreachableException>()
+                .RetryForever();
+
+            policy.Execute(TryConnect);
         }
 
         public void Dispose()
         {
             _bus.Dispose();
         }
-    }
-
-    public interface IMessageBus : IDisposable
-    {
-        void Publish<T>( T message ) where T : IntegrationEvent;
-        Task PublishAsync<T>( T message ) where T : IntegrationEvent;
-        void Subscribe<T>( string subscriptionId, Action<T> onMessage ) where T : class;
-        void SubscribeAsync<T>( string subscriptionId, Func<T, Task> onMessage ) where T : class;
-        TResponse Request<TRequest, TResponse>( TRequest request )
-            where TRequest : IntegrationEvent
-            where TResponse : ResponseMessage;
-        Task<TResponse> RequestAsync<TRequest, TResponse>( TRequest request )
-            where TRequest : IntegrationEvent
-            where TResponse : ResponseMessage;
-        Task<IDisposable> RespondAsync<TRequest, TResponse>( Func<TRequest, Task<TResponse>> responder )
-            where TRequest : IntegrationEvent
-            where TResponse : ResponseMessage;
-        bool IsConnected { get; }
-
     }
 }
