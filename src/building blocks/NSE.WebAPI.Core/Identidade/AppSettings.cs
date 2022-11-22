@@ -1,5 +1,4 @@
-﻿using System;
-namespace NSE.WebAPI.Core.Identidade
+﻿namespace NSE.WebAPI.Core.Identidade
 {
     public class AppSettings
     {

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using NSE.WebApp.MVC.Extensions;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
-using NSE.WebApp.MVC.Extensions;
 
 namespace NSE.WebApp.MVC.Services.Handlers
 {
@@ -11,12 +11,12 @@ namespace NSE.WebApp.MVC.Services.Handlers
     {
         private readonly IUser _user;
 
-        public HttpClientAuthorizationDelegatingHandler(IUser user)
+        public HttpClientAuthorizationDelegatingHandler( IUser user )
         {
             _user = user;
         }
 
-        protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected override Task<HttpResponseMessage> SendAsync( HttpRequestMessage request, CancellationToken cancellationToken )
         {
             var authorizationHeader = _user.ObterHttpContext().Request.Headers["Authorization"];
 

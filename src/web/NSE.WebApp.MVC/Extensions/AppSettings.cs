@@ -1,5 +1,4 @@
-﻿using System;
-namespace NSE.WebApp.MVC.Extensions
+﻿namespace NSE.WebApp.MVC.Extensions
 {
     public class AppSettings
     {

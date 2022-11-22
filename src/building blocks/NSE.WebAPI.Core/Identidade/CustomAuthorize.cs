@@ -1,15 +1,14 @@
-﻿using System;
-using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
+using System.Linq;
+using System.Security.Claims;
 
 namespace NSE.WebAPI.Core.Identidade
 {
     public class CustomAuthorization
     {
-        public static bool ValidarClaimsUsuario(HttpContext context, string claimName, string claimValue)
+        public static bool ValidarClaimsUsuario( HttpContext context, string claimName, string claimValue )
         {
             return context.User.Identity.IsAuthenticated &&
                 context.User.Claims.Any(c => c.Type == claimName && c.Value.Contains(claimValue));
@@ -18,7 +17,7 @@ namespace NSE.WebAPI.Core.Identidade
 
     public class ClaimsAuthorizeAttribute : TypeFilterAttribute
     {
-        public ClaimsAuthorizeAttribute(string claimName, string claimValue) : base(typeof(RequisitoClaimFilter))
+        public ClaimsAuthorizeAttribute( string claimName, string claimValue ) : base(typeof(RequisitoClaimFilter))
         {
             Arguments = new object[] { new Claim(claimName, claimValue) };
         }
@@ -28,14 +27,14 @@ namespace NSE.WebAPI.Core.Identidade
     {
         private readonly Claim _claim;
 
-        public RequisitoClaimFilter(Claim claim)
+        public RequisitoClaimFilter( Claim claim )
         {
             _claim = claim;
         }
 
-        public void OnAuthorization(AuthorizationFilterContext context)
+        public void OnAuthorization( AuthorizationFilterContext context )
         {
-            if(!context.HttpContext.User.Identity.IsAuthenticated)
+            if (!context.HttpContext.User.Identity.IsAuthenticated)
             {
                 context.Result = new StatusCodeResult(401);
                 return;

@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using NSE.Catalogo.API.Models;
 
@@ -7,7 +6,7 @@ namespace NSE.Catalogo.API.Data.Mappings
 {
     public class ProdutoMapping : IEntityTypeConfiguration<Produto>
     {
-        public void Configure(EntityTypeBuilder<Produto> builder)
+        public void Configure( EntityTypeBuilder<Produto> builder )
         {
             builder.HasKey(c => c.Id);
 

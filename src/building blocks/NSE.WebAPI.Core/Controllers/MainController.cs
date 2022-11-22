@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace NSE.WebAPI.Core.Controllers
 {
@@ -11,7 +11,7 @@ namespace NSE.WebAPI.Core.Controllers
     {
         protected ICollection<string> Erros = new List<string>();
 
-        protected ActionResult CustomResponse(object result = null)
+        protected ActionResult CustomResponse( object result = null )
         {
             if (OperacaoValida())
                 return Ok(result);
@@ -22,7 +22,7 @@ namespace NSE.WebAPI.Core.Controllers
             }));
         }
 
-        protected ActionResult CustomResponse(ModelStateDictionary modelState)
+        protected ActionResult CustomResponse( ModelStateDictionary modelState )
         {
             var erros = modelState.Values.SelectMany(e => e.Errors);
 
@@ -32,7 +32,7 @@ namespace NSE.WebAPI.Core.Controllers
             return CustomResponse();
         }
 
-        protected ActionResult CustomResponse(ValidationResult validationResult)
+        protected ActionResult CustomResponse( ValidationResult validationResult )
         {
             foreach (var erro in validationResult.Errors)
                 AdicionarErroProcessamento(erro.ErrorMessage);
@@ -45,7 +45,7 @@ namespace NSE.WebAPI.Core.Controllers
             return !Erros.Any();
         }
 
-        protected void AdicionarErroProcessamento(string erro)
+        protected void AdicionarErroProcessamento( string erro )
         {
             Erros.Add(erro);
         }

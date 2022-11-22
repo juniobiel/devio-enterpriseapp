@@ -1,13 +1,13 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace NSE.Clientes.API.Configuration
 {
     public static class SwaggerConfig
     {
-        public static void AddSwaggerConfiguration(this IServiceCollection services)
+        public static void AddSwaggerConfiguration( this IServiceCollection services )
         {
             services.AddSwaggerGen(c =>
             {
@@ -46,7 +46,7 @@ namespace NSE.Clientes.API.Configuration
             });
         }
 
-        public static void UseSwaggerConfiguration(this IApplicationBuilder app)
+        public static void UseSwaggerConfiguration( this IApplicationBuilder app )
         {
             app.UseSwagger();
             app.UseSwaggerUI(c =>

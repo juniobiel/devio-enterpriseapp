@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -7,7 +6,7 @@ namespace NSE.WebApp.MVC.Configuration
 {
     public static class IdentityConfig
     {
-        public static void AddIdentityConfiguration(this IServiceCollection services)
+        public static void AddIdentityConfiguration( this IServiceCollection services )
         {
             services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options =>
@@ -17,7 +16,7 @@ namespace NSE.WebApp.MVC.Configuration
                 });
         }
 
-        public static void UseIdentityConfiguration(this IApplicationBuilder app)
+        public static void UseIdentityConfiguration( this IApplicationBuilder app )
         {
             app.UseAuthentication();
             app.UseAuthorization();

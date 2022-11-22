@@ -1,8 +1,8 @@
-﻿using System.Net;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Polly.CircuitBreaker;
 using Refit;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace NSE.WebApp.MVC.Extensions
 {
@@ -10,22 +10,22 @@ namespace NSE.WebApp.MVC.Extensions
     {
         private readonly RequestDelegate _next;
 
-        public ExceptionMiddleware(RequestDelegate next)
+        public ExceptionMiddleware( RequestDelegate next )
         {
             _next = next;
         }
 
-        public async Task InvokeAsync(HttpContext httpContext)
+        public async Task InvokeAsync( HttpContext httpContext )
         {
             try
             {
                 await _next(httpContext);
             }
-            catch(CustomHttpRequestException ex)
+            catch (CustomHttpRequestException ex)
             {
                 HandleRequestExceptionAsync(httpContext, ex.StatusCode);
             }
-            catch(ValidationApiException ex)
+            catch (ValidationApiException ex)
             {
                 HandleRequestExceptionAsync(httpContext, ex.StatusCode);
             }
@@ -33,15 +33,15 @@ namespace NSE.WebApp.MVC.Extensions
             {
                 HandleRequestExceptionAsync(httpContext, ex.StatusCode);
             }
-            catch(BrokenCircuitException)
+            catch (BrokenCircuitException)
             {
                 HandleCircuitBreakerException(httpContext);
             }
         }
 
-        public static void HandleRequestExceptionAsync(HttpContext context, HttpStatusCode statusCode)
+        public static void HandleRequestExceptionAsync( HttpContext context, HttpStatusCode statusCode )
         {
-            if(statusCode == HttpStatusCode.Unauthorized)
+            if (statusCode == HttpStatusCode.Unauthorized)
             {
                 context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
                 return;
@@ -49,7 +49,7 @@ namespace NSE.WebApp.MVC.Extensions
             context.Response.StatusCode = (int)statusCode;
         }
 
-        public static void HandleCircuitBreakerException(HttpContext context)
+        public static void HandleCircuitBreakerException( HttpContext context )
         {
             context.Response.Redirect("/sistema-indisponivel");
         }

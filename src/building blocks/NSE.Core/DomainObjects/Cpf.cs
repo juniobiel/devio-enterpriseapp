@@ -10,14 +10,14 @@ namespace NSE.Core.DomainObjects
         //Construtor do EntityFramework
         protected Cpf() { }
 
-        public Cpf(string numero)
+        public Cpf( string numero )
         {
             if (!Validar(numero))
                 throw new DomainException("CPF Inválido");
             Numero = numero;
         }
 
-        public static bool Validar(string cpf)
+        public static bool Validar( string cpf )
         {
             cpf = cpf.ApenasNumeros(cpf);
 

@@ -14,7 +14,7 @@ namespace NSE.Clientes.API
     {
         public IConfiguration Configuration { get; }
 
-        public Startup(IHostEnvironment hostEnvironment)
+        public Startup( IHostEnvironment hostEnvironment )
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)

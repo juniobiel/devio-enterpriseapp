@@ -1,11 +1,10 @@
 ﻿
-using System;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using NSE.WebApp.MVC.Extensions;
 using NSE.WebApp.MVC.Models;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace NSE.WebApp.MVC.Services
 {
@@ -13,13 +12,13 @@ namespace NSE.WebApp.MVC.Services
     {
         private readonly HttpClient _httpClient;
 
-        public AutenticacaoService(HttpClient httpClient, IOptions<AppSettings> settings)
+        public AutenticacaoService( HttpClient httpClient, IOptions<AppSettings> settings )
         {
             httpClient.BaseAddress = new Uri(settings.Value.AutenticacaoUrl);
             _httpClient = httpClient;
         }
 
-        public async Task<UsuarioRespostaLogin> Login(UsuarioLogin usuarioLogin)
+        public async Task<UsuarioRespostaLogin> Login( UsuarioLogin usuarioLogin )
         {
             var loginContent = ObterConteudo(usuarioLogin);
 
@@ -35,7 +34,7 @@ namespace NSE.WebApp.MVC.Services
             return await DeserializarObjetoResponse<UsuarioRespostaLogin>(response);
         }
 
-        public async Task<UsuarioRespostaLogin> Registro(UsuarioRegistro usuarioRegistro)
+        public async Task<UsuarioRespostaLogin> Registro( UsuarioRegistro usuarioRegistro )
         {
             var registroContent = ObterConteudo(usuarioRegistro);
 

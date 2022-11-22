@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NSE.Catalogo.API.Models;
 using NSE.Core.Data;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace NSE.Catalogo.API.Data.Repository
 {
@@ -11,7 +11,7 @@ namespace NSE.Catalogo.API.Data.Repository
     {
         private readonly CatalogoContext _context;
 
-        public ProdutoRepository(CatalogoContext context)
+        public ProdutoRepository( CatalogoContext context )
         {
             _context = context;
         }
@@ -23,17 +23,17 @@ namespace NSE.Catalogo.API.Data.Repository
             return await _context.Produtos.AsNoTracking().ToListAsync();
         }
 
-        public async Task<Produto> ObterPorId(Guid id)
+        public async Task<Produto> ObterPorId( Guid id )
         {
             return await _context.Produtos.FindAsync(id);
         }
 
-        public void Adicionar(Produto produto)
+        public void Adicionar( Produto produto )
         {
             _context.Produtos.Add(produto);
         }
 
-        public void Atualizar(Produto produto)
+        public void Atualizar( Produto produto )
         {
             _context.Produtos.Update(produto);
         }

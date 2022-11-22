@@ -6,7 +6,7 @@ namespace NSE.Clientes.API.Data.Mappings
 {
     public class EnderecoMapping : IEntityTypeConfiguration<Endereco>
     {
-        public void Configure(EntityTypeBuilder<Endereco> builder)
+        public void Configure( EntityTypeBuilder<Endereco> builder )
         {
             builder.HasKey(c => c.Id);
 

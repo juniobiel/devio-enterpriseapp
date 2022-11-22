@@ -2,7 +2,7 @@
 {
     public abstract class IntegrationEvent : Event
     {
-        
+
     }
 }
 

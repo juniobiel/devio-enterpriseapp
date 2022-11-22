@@ -1,6 +1,4 @@
 ﻿using EasyNetQ;
-using MediatR;
-using NSE.Core.Messages;
 using NSE.Core.Messages.Integration;
 using Polly;
 using RabbitMQ.Client.Exceptions;

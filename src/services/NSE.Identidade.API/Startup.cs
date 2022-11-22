@@ -12,7 +12,7 @@ namespace NSE.Identidade.API
     {
         public IConfiguration Configuration { get; }
 
-        public Startup( IHostEnvironment hostEnvironment)
+        public Startup( IHostEnvironment hostEnvironment )
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
@@ -20,7 +20,7 @@ namespace NSE.Identidade.API
                 .AddJsonFile($"appsettings.{hostEnvironment.EnvironmentName}.json", true, true)
                 .AddEnvironmentVariables();
 
-            if(hostEnvironment.IsDevelopment())
+            if (hostEnvironment.IsDevelopment())
             {
                 builder.AddUserSecrets<Startup>();
             }

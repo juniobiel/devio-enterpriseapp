@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,11 +11,11 @@ namespace NSE.Clientes.API.Configurations
 {
     public static class ApiConfig
     {
-        public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static void AddApiConfiguration( this IServiceCollection services, IConfiguration configuration )
         {
             services.AddControllers();
 
-            services.AddDbContext<ClientesContext>(options =>   
+            services.AddDbContext<ClientesContext>(options =>
             options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddCors(options =>
@@ -29,7 +28,7 @@ namespace NSE.Clientes.API.Configurations
             });
         }
 
-        public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static void UseApiConfiguration( this IApplicationBuilder app, IWebHostEnvironment env )
         {
             if (env.IsDevelopment())
             {

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using NSE.Clientes.API.Application.Commands;
 using NSE.Core.Mediator;
 using NSE.WebAPI.Core.Controllers;
+using System;
+using System.Threading.Tasks;
 
 namespace NSE.Clientes.API.Controllers
 {
@@ -11,7 +11,7 @@ namespace NSE.Clientes.API.Controllers
     {
         private readonly IMediatorHandler _mediatorHandler;
 
-        public ClientesController(IMediatorHandler mediatorHandler)
+        public ClientesController( IMediatorHandler mediatorHandler )
         {
             _mediatorHandler = mediatorHandler;
         }

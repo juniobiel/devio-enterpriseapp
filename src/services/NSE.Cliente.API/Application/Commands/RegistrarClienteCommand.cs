@@ -1,6 +1,6 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
 using NSE.Core.Messages;
+using System;
 
 namespace NSE.Clientes.API.Application.Commands
 {
@@ -11,7 +11,7 @@ namespace NSE.Clientes.API.Application.Commands
         public string Email { get; private set; }
         public string Cpf { get; private set; }
 
-        public RegistrarClienteCommand(Guid id, string nome, string email, string cpf)
+        public RegistrarClienteCommand( Guid id, string nome, string email, string cpf )
         {
             AggregateId = id;
             Id = id;
@@ -47,12 +47,12 @@ namespace NSE.Clientes.API.Application.Commands
                     .WithMessage("O Email informado não é válido");
             }
 
-            protected static bool TerCpfValido(string cpf)
+            protected static bool TerCpfValido( string cpf )
             {
                 return Core.DomainObjects.Cpf.Validar(cpf);
             }
 
-            protected static bool TerEmailValido(string email)
+            protected static bool TerEmailValido( string email )
             {
                 return Core.DomainObjects.Email.Validar(email);
             }

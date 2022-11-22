@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
-using Microsoft.AspNetCore.Http;
 
 namespace NSE.WebApp.MVC.Extensions
 {
@@ -12,7 +12,7 @@ namespace NSE.WebApp.MVC.Extensions
         string ObterUserEmail();
         string ObterUserToken();
         bool EstaAutenticado();
-        bool PossuiRole(string role);
+        bool PossuiRole( string role );
         IEnumerable<Claim> ObterClaims();
         HttpContext ObterHttpContext();
     }
@@ -21,7 +21,7 @@ namespace NSE.WebApp.MVC.Extensions
     {
         private readonly IHttpContextAccessor _accessor;
 
-        public AspNetUser(IHttpContextAccessor accessor)
+        public AspNetUser( IHttpContextAccessor accessor )
         {
             _accessor = accessor;
         }
@@ -58,7 +58,7 @@ namespace NSE.WebApp.MVC.Extensions
             return EstaAutenticado() ? _accessor.HttpContext.User.GetUserToken() : "";
         }
 
-        public bool PossuiRole(string role)
+        public bool PossuiRole( string role )
         {
             return _accessor.HttpContext.User.IsInRole(role);
         }
@@ -66,9 +66,9 @@ namespace NSE.WebApp.MVC.Extensions
 
     public static class ClaimsPrincipalExtensions
     {
-        public static string GetUserId(this ClaimsPrincipal principal)
+        public static string GetUserId( this ClaimsPrincipal principal )
         {
-            if(principal == null)
+            if (principal == null)
             {
                 throw new ArgumentException(nameof(principal));
             }
@@ -76,7 +76,7 @@ namespace NSE.WebApp.MVC.Extensions
             return claim?.Value;
         }
 
-        public static string GetUserEmail(this ClaimsPrincipal principal)
+        public static string GetUserEmail( this ClaimsPrincipal principal )
         {
             if (principal == null)
             {
@@ -86,7 +86,7 @@ namespace NSE.WebApp.MVC.Extensions
             return claim?.Value;
         }
 
-        public static string GetUserToken(this ClaimsPrincipal principal)
+        public static string GetUserToken( this ClaimsPrincipal principal )
         {
             if (principal == null)
             {

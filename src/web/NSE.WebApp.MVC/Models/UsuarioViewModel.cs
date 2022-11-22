@@ -1,8 +1,7 @@
-﻿using System;
+﻿using NSE.WebApp.MVC.Extensions;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using NSE.WebApp.MVC.Extensions;
 
 namespace NSE.WebApp.MVC.Models
 {
