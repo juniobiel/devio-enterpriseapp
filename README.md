@@ -21,3 +21,7 @@ Para conectar ao SQL Server, precisa utilizar o endereço de localhost: `127.0.0
 ```docker run -d --hostname rabbit-host --name rabbit-nerdstore -p 15672:15672 -p 5672:5672 rabbitmq:management```
 
 Para conectar ao dashboard do rabbit é necessário utilizar o usuário e senha: `guest`
+
+### Stacks e Tools
+
+1. EasyQ -> operações de filas
