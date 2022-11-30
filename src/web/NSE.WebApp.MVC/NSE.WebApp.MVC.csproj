@@ -29,8 +29,6 @@
   <ItemGroup>
     <Folder Include="Configuration\" />
     <Folder Include="Views\Identidade\" />
-    <Folder Include="Extensions\" />
-    <Folder Include="Views\Shared\Components\" />
     <Folder Include="Services\Handlers\" />
   </ItemGroup>
   <ItemGroup>
