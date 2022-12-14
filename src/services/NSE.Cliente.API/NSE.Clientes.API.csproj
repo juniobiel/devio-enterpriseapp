@@ -16,6 +16,12 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Self Hosting Clientes - Development' " />
   <ItemGroup>
+    <Compile Remove="Application\Queries\**" />
+    <Content Remove="Application\Queries\**" />
+    <EmbeddedResource Remove="Application\Queries\**" />
+    <None Remove="Application\Queries\**" />
+  </ItemGroup>
+  <ItemGroup>
     <PackageReference Include="EasyNetQ" Version="7.3.2" />
     <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
@@ -56,7 +62,6 @@
     <Folder Include="Application\" />
     <Folder Include="Application\Commands\" />
     <Folder Include="Application\Events\" />
-    <Folder Include="Application\Queries\" />
     <Folder Include="Data\Repository\" />
     <Folder Include="Services\" />
   </ItemGroup>
