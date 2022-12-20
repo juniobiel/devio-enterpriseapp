@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace NSE.Bff.Compras.Controllers
 {
-    public class HttpClientAuthorizationDelegatinHandler : DelegatingHandler
+    public class HttpClientAuthorizationDelegatingHandler : DelegatingHandler
     {
         private readonly IAspNetUser _aspNetUser;
 
-        public HttpClientAuthorizationDelegatinHandler(IAspNetUser aspNetUser )
+        public HttpClientAuthorizationDelegatingHandler(IAspNetUser aspNetUser )
         {
             _aspNetUser = aspNetUser;
         }
