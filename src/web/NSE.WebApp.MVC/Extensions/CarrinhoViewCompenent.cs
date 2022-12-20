@@ -7,16 +7,16 @@ namespace NSE.WebApp.MVC.Extensions
 {
     public class CarrinhoViewCompenent : ViewComponent
     {
-        private readonly ICarrinhoService _carrinhoService;
+        private readonly IComprasBffServices _comprasBffService;
 
-        public CarrinhoViewCompenent( ICarrinhoService carrinhoService )
+        public CarrinhoViewCompenent( IComprasBffServices comprasBffService )
         {
-            _carrinhoService = carrinhoService;
+            _comprasBffService = comprasBffService;
         }
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            return View(await _carrinhoService.ObterCarrinho() ?? new CarrinhoViewModel());
+            return View(await _comprasBffService.ObterQuantidadeCarrinho());
         }
     }
 }

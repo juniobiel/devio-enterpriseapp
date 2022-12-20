@@ -4,6 +4,8 @@ using NSE.Bff.Compras.Controllers;
 using NSE.Bff.Compras.Services;
 using NSE.WebAPI.Core.Extensions;
 using NSE.WebAPI.Core.Usuario;
+using Polly;
+using System;
 
 namespace NSE.Bff.Compras.Configuration
 {
