@@ -18,13 +18,13 @@
       }
     },
     "NSE.Carrinho.API": {
-        "commandName": "Project",
-        "launchBrowser": true,
-        "launchUrl": "weatherforecast",
-        "applicationUrl": "https://localhost:37822;http://localhost:37722",
-        "environmentVariables": {
-            "ASPNETCORE_ENVIRONMENT": "Development"
-        }
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "weatherforecast",
+      "applicationUrl": "https://localhost:37822;http://localhost:37722",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
     },
     "Docker": {
       "commandName": "Docker",

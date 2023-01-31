@@ -57,6 +57,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Compras", "Compras", "{2FB2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Bff.Compras", "src\api gateways\NSE.Bff.Compras\NSE.Bff.Compras.csproj", "{C872BF09-D6BD-4F1B-9169-ED4B14B1827C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Pedidos.Domain", "src\services\NSE.Pedidos.Domain\NSE.Pedidos.Domain.csproj", "{18C06076-99C7-4279-A995-43CBEEB4047E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Pedidos.Infra", "src\services\NSE.Pedidos.Infra\NSE.Pedidos.Infra.csproj", "{68070108-CBA8-4C68-921F-EB5BE1A04987}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +111,14 @@ Global
 		{C872BF09-D6BD-4F1B-9169-ED4B14B1827C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C872BF09-D6BD-4F1B-9169-ED4B14B1827C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C872BF09-D6BD-4F1B-9169-ED4B14B1827C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18C06076-99C7-4279-A995-43CBEEB4047E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18C06076-99C7-4279-A995-43CBEEB4047E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18C06076-99C7-4279-A995-43CBEEB4047E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18C06076-99C7-4279-A995-43CBEEB4047E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68070108-CBA8-4C68-921F-EB5BE1A04987}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68070108-CBA8-4C68-921F-EB5BE1A04987}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68070108-CBA8-4C68-921F-EB5BE1A04987}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68070108-CBA8-4C68-921F-EB5BE1A04987}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -138,6 +150,8 @@ Global
 		{28B2966A-AFC5-4FAF-B701-3FA938516AD4} = {CE59F6FC-1501-4E25-814A-52B0E0C677C7}
 		{2FB223DD-CE57-48AA-ACEC-93C14F16A1B9} = {28B2966A-AFC5-4FAF-B701-3FA938516AD4}
 		{C872BF09-D6BD-4F1B-9169-ED4B14B1827C} = {2FB223DD-CE57-48AA-ACEC-93C14F16A1B9}
+		{18C06076-99C7-4279-A995-43CBEEB4047E} = {D09EA10B-158F-476C-8CE7-D53225306B70}
+		{68070108-CBA8-4C68-921F-EB5BE1A04987} = {D09EA10B-158F-476C-8CE7-D53225306B70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5636683D-9745-4645-8DF8-3834F35F791B}

@@ -14,7 +14,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <AssemblyName>NSE.Cliente.API</AssemblyName>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Self Hosting Clientes - Development' " />
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'SelfHosting Clientes - Development' " />
   <ItemGroup>
     <Compile Remove="Application\Queries\**" />
     <Content Remove="Application\Queries\**" />
