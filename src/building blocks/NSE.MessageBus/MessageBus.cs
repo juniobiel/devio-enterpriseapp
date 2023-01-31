@@ -78,15 +78,15 @@ namespace NSE.MessageBus
                 .Or<BrokerUnreachableException>()
                 .WaitAndRetry(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
 
-            policy.Execute(() => 
-            { 
+            policy.Execute(() =>
+            {
                 _bus = RabbitHutch.CreateBus(_connectionString);
                 _advancedBus = _bus.Advanced;
                 _advancedBus.Disconnected += OnDisconnect;
             });
         }
 
-        private void OnDisconnect(object s, EventArgs e)
+        private void OnDisconnect( object s, EventArgs e )
         {
             var policy = Policy.Handle<EasyNetQException>()
                 .Or<BrokerUnreachableException>()

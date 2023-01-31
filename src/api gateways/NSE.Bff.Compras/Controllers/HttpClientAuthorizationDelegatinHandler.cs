@@ -11,12 +11,12 @@ namespace NSE.Bff.Compras.Controllers
     {
         private readonly IAspNetUser _aspNetUser;
 
-        public HttpClientAuthorizationDelegatingHandler(IAspNetUser aspNetUser )
+        public HttpClientAuthorizationDelegatingHandler( IAspNetUser aspNetUser )
         {
             _aspNetUser = aspNetUser;
         }
 
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        protected override async Task<HttpResponseMessage> SendAsync( HttpRequestMessage request, CancellationToken cancellationToken )
         {
             var authorizationHeader = _aspNetUser.ObterHttpContext().Request.Headers["Authorization"];
 

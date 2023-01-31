@@ -16,7 +16,7 @@ namespace NSE.Carrinho.API.Data
         public DbSet<CarrinhoItem> CarrinhoItens { get; set; }
         public DbSet<CarrinhoCliente> CarrinhoCliente { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating( ModelBuilder modelBuilder )
         {
             modelBuilder.Ignore<ValidationResult>();
 

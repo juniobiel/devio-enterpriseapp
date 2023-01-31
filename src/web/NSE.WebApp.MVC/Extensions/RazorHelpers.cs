@@ -29,7 +29,7 @@ namespace NSE.WebApp.MVC.Extensions
             return quantidade > 0 ? $"Apenas {quantidade} em estoque!" : "Produto esgotado!";
         }
 
-        public static string UnidadesPorProduto(this RazorPage page, int unidades)
+        public static string UnidadesPorProduto( this RazorPage page, int unidades )
         {
             return unidades > 1 ? $"{unidades} unidades" : $"{unidades} unidade";
         }

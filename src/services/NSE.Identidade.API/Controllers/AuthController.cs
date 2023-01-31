@@ -50,7 +50,7 @@ namespace NSE.Identidade.API.Controllers
             if (result.Succeeded)
             {
                 var clientResult = await RegistrarCliente(usuarioRegistro);
-                if(!clientResult.ValidationResult.IsValid)
+                if (!clientResult.ValidationResult.IsValid)
                 {
                     await _userManager.DeleteAsync(user);
                     return CustomResponse(clientResult.ValidationResult);

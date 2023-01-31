@@ -1,8 +1,8 @@
-﻿using System.Net.Http;
-using System;
-using Polly.Retry;
+﻿using Polly;
 using Polly.Extensions.Http;
-using Polly;
+using Polly.Retry;
+using System;
+using System.Net.Http;
 
 namespace NSE.WebAPI.Core.Extensions
 {

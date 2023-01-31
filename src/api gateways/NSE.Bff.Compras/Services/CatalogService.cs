@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Options;
 using NSE.Bff.Compras.Extensions;
-using System.Net.Http;
-using System;
-using System.Threading.Tasks;
 using NSE.Bff.Compras.Models;
+using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace NSE.Bff.Compras.Services
 {
@@ -27,7 +27,7 @@ namespace NSE.Bff.Compras.Services
             var response = await _httpClient.GetAsync($"/catalogo/produtos/{id}");
 
             TratarErrosResponse(response);
-            
+
             return await DeserializarObjetoResponse<ItemProdutoDTO>(response);
         }
     }

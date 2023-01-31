@@ -23,7 +23,7 @@ namespace NSE.Carrinho.API.Model
         [JsonIgnore]
         public CarrinhoCliente CarrinhoCliente { get; set; }
 
-        internal void AssociarCarrinho(Guid carrinhoId)
+        internal void AssociarCarrinho( Guid carrinhoId )
         {
             CarrinhoId = carrinhoId;
         }
@@ -33,12 +33,12 @@ namespace NSE.Carrinho.API.Model
             return Quantidade * Valor;
         }
 
-        internal void AdicionarUnidades(int unidades)
+        internal void AdicionarUnidades( int unidades )
         {
             Quantidade += unidades;
         }
 
-        internal void AtualizarUnidades(int unidades)
+        internal void AtualizarUnidades( int unidades )
         {
             Quantidade = unidades;
         }

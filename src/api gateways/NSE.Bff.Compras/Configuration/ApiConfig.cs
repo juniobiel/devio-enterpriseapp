@@ -9,7 +9,7 @@ namespace NSE.Bff.Compras.Configuration
 {
     public static class ApiConfig
     {
-        public static void AddApiConfiguration(this IServiceCollection services, IConfiguration configuration)
+        public static void AddApiConfiguration( this IServiceCollection services, IConfiguration configuration )
         {
             services.AddControllers();
 
@@ -24,9 +24,9 @@ namespace NSE.Bff.Compras.Configuration
             });
         }
 
-        public static void UseApiConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
+        public static void UseApiConfiguration( this IApplicationBuilder app, IWebHostEnvironment env )
         {
-            if(env.IsDevelopment())
+            if (env.IsDevelopment())
                 app.UseDeveloperExceptionPage();
 
             app.UseHttpsRedirection();
