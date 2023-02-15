@@ -45,17 +45,25 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "FluentValidation.AspNetCore": {
+            "FluentValidation": {
               "target": "Package",
-              "version": "[11.2.2, )"
+              "version": "[8.6.2, )"
             },
-            "MediatR": {
+            "Microsoft.Extensions.Configuration.Abstractions": {
               "target": "Package",
-              "version": "[11.0.0, )"
+              "version": "[3.1.4, )"
             },
-            "Microsoft.EntityFrameworkCore": {
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
               "target": "Package",
-              "version": "[3.1.29, )"
+              "version": "[3.1.4, )"
+            },
+            "NetDevPack": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "mediatr": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             }
           },
           "imports": [

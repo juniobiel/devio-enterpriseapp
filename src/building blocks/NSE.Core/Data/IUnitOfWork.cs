@@ -7,4 +7,3 @@ namespace NSE.Core.Data
         Task<bool> Commit();
     }
 }
-

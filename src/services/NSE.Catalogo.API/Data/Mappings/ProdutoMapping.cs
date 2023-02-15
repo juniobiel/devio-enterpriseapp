@@ -6,7 +6,7 @@ namespace NSE.Catalogo.API.Data.Mappings
 {
     public class ProdutoMapping : IEntityTypeConfiguration<Produto>
     {
-        public void Configure( EntityTypeBuilder<Produto> builder )
+        public void Configure(EntityTypeBuilder<Produto> builder)
         {
             builder.HasKey(c => c.Id);
 
@@ -26,4 +26,3 @@ namespace NSE.Catalogo.API.Data.Mappings
         }
     }
 }
-

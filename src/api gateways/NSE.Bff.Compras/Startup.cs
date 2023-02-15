@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSE.Bff.Compras.Configuration;
+using NSE.Bff.Compras.Configuration.Configuration;
 using NSE.WebAPI.Core.Identidade;
 
 namespace NSE.Bff.Compras
@@ -12,7 +13,7 @@ namespace NSE.Bff.Compras
     {
         public IConfiguration Configuration { get; }
 
-        public Startup( IHostEnvironment hostEnvironment )
+        public Startup(IHostEnvironment hostEnvironment)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
@@ -21,24 +22,30 @@ namespace NSE.Bff.Compras
                 .AddEnvironmentVariables();
 
             if (hostEnvironment.IsDevelopment())
+            {
                 builder.AddUserSecrets<Startup>();
+            }
 
             Configuration = builder.Build();
         }
 
-        public void ConfigureServices( IServiceCollection services )
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiConfiguration(Configuration);
-            services.AddJwtConfiguration(Configuration);
-            services.AddSwaggerConfiguration();
-            services.RegisterServices();
-            services.AddMessageBusConfiguration(Configuration);
 
+            services.AddJwtConfiguration(Configuration);
+
+            services.AddSwaggerConfiguration();
+
+            services.RegisterServices();
+
+            services.AddMessageBusConfiguration(Configuration);
         }
 
-        public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwaggerConfiguration();
+
             app.UseApiConfiguration(env);
         }
     }

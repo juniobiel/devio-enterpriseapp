@@ -1,6 +1,5 @@
-﻿
+﻿using System;
 using MediatR;
-using System;
 
 namespace NSE.Core.Messages
 {
@@ -14,4 +13,3 @@ namespace NSE.Core.Messages
         }
     }
 }
-

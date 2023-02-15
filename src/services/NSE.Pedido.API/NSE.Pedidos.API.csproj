@@ -1,13 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
+    <UserSecretsId>8ef3dd1f-a7e2-4340-87cb-3eff202c82e1</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.29">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.29" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.29">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
   </ItemGroup>
 
 
@@ -20,10 +34,9 @@
     <None Remove="Application\Queries\" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Application\Commands\" />
     <Folder Include="Controllers\" />
     <Folder Include="Configuration\" />
-    <Folder Include="Application\" />
-    <Folder Include="Application\Commands\" />
     <Folder Include="Application\Events\" />
     <Folder Include="Application\Queries\" />
   </ItemGroup>
@@ -34,8 +47,7 @@
     <ProjectReference Include="..\..\building blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\NSE.Identidade.API\NSE.Identidade.API.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
+    <ProjectReference Include="..\NSE.Pedidos.Domain\NSE.Pedidos.Domain.csproj" />
+    <ProjectReference Include="..\NSE.Pedidos.Infra\NSE.Pedidos.Infra.csproj" />
   </ItemGroup>
 </Project>

@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.Net;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Polly.CircuitBreaker;
 using Refit;
-using System.Net;
-using System.Threading.Tasks;
 
 namespace NSE.WebApp.MVC.Extensions
 {
@@ -10,12 +10,12 @@ namespace NSE.WebApp.MVC.Extensions
     {
         private readonly RequestDelegate _next;
 
-        public ExceptionMiddleware( RequestDelegate next )
+        public ExceptionMiddleware(RequestDelegate next)
         {
             _next = next;
         }
 
-        public async Task InvokeAsync( HttpContext httpContext )
+        public async Task InvokeAsync(HttpContext httpContext)
         {
             try
             {
@@ -35,24 +35,24 @@ namespace NSE.WebApp.MVC.Extensions
             }
             catch (BrokenCircuitException)
             {
-                HandleCircuitBreakerException(httpContext);
+                HandleCircuitBreakerExceptionAsync(httpContext);
             }
         }
 
-        public static void HandleRequestExceptionAsync( HttpContext context, HttpStatusCode statusCode )
+        private static void HandleRequestExceptionAsync(HttpContext context, HttpStatusCode statusCode)
         {
             if (statusCode == HttpStatusCode.Unauthorized)
             {
                 context.Response.Redirect($"/login?ReturnUrl={context.Request.Path}");
                 return;
             }
+
             context.Response.StatusCode = (int)statusCode;
         }
 
-        public static void HandleCircuitBreakerException( HttpContext context )
+        private static void HandleCircuitBreakerExceptionAsync(HttpContext context)
         {
             context.Response.Redirect("/sistema-indisponivel");
         }
     }
 }
-

@@ -13,4 +13,3 @@ namespace NSE.Core.Messages
         }
     }
 }
-

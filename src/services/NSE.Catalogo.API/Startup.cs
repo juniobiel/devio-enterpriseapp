@@ -12,7 +12,7 @@ namespace NSE.Catalogo.API
     {
         public IConfiguration Configuration { get; }
 
-        public Startup( IHostEnvironment hostEnvironment )
+        public Startup(IHostEnvironment hostEnvironment)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
@@ -28,17 +28,21 @@ namespace NSE.Catalogo.API
             Configuration = builder.Build();
         }
 
-        public void ConfigureServices( IServiceCollection services )
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddApiConfiguration(Configuration);
+
             services.AddJwtConfiguration(Configuration);
+
             services.AddSwaggerConfiguration();
+
             services.RegisterServices();
         }
 
-        public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwaggerConfiguration();
+
             app.UseApiConfiguration(env);
         }
     }

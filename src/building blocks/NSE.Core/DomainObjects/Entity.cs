@@ -1,6 +1,6 @@
-﻿using NSE.Core.Messages;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using NSE.Core.Messages;
 
 namespace NSE.Core.DomainObjects
 {
@@ -16,13 +16,13 @@ namespace NSE.Core.DomainObjects
         private List<Event> _notificacoes;
         public IReadOnlyCollection<Event> Notificacoes => _notificacoes?.AsReadOnly();
 
-        public void AdicionarEvento( Event evento )
+        public void AdicionarEvento(Event evento)
         {
             _notificacoes = _notificacoes ?? new List<Event>();
             _notificacoes.Add(evento);
         }
 
-        public void RemoverEvento( Event eventItem )
+        public void RemoverEvento(Event eventItem)
         {
             _notificacoes?.Remove(eventItem);
         }
@@ -33,7 +33,8 @@ namespace NSE.Core.DomainObjects
         }
 
         #region Comparações
-        public override bool Equals( object obj )
+
+        public override bool Equals(object obj)
         {
             var compareTo = obj as Entity;
 
@@ -43,7 +44,7 @@ namespace NSE.Core.DomainObjects
             return Id.Equals(compareTo.Id);
         }
 
-        public static bool operator ==( Entity a, Entity b )
+        public static bool operator ==(Entity a, Entity b)
         {
             if (ReferenceEquals(a, null) && ReferenceEquals(b, null))
                 return true;
@@ -54,7 +55,7 @@ namespace NSE.Core.DomainObjects
             return a.Equals(b);
         }
 
-        public static bool operator !=( Entity a, Entity b )
+        public static bool operator !=(Entity a, Entity b)
         {
             return !(a == b);
         }
@@ -68,7 +69,7 @@ namespace NSE.Core.DomainObjects
         {
             return $"{GetType().Name} [Id={Id}]";
         }
+
         #endregion
     }
 }
-

@@ -4,7 +4,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NSE.Identidade.API.Configuration;
-using NSE.Identidade.API.Configurations;
 
 namespace NSE.Identidade.API
 {
@@ -12,7 +11,7 @@ namespace NSE.Identidade.API
     {
         public IConfiguration Configuration { get; }
 
-        public Startup( IHostEnvironment hostEnvironment )
+        public Startup(IHostEnvironment hostEnvironment)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
@@ -28,17 +27,21 @@ namespace NSE.Identidade.API
             Configuration = builder.Build();
         }
 
-        public void ConfigureServices( IServiceCollection services )
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityConfiguration(Configuration);
+
             services.AddApiConfiguration();
+
             services.AddSwaggerConfiguration();
+
             services.AddMessageBusConfiguration(Configuration);
         }
 
-        public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwaggerConfiguration();
+            
             app.UseApiConfiguration(env);
         }
     }

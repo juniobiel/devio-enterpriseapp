@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NSE.WebApp.MVC.Configuration;
 
 namespace NSE.WebApp.MVC
@@ -10,7 +11,7 @@ namespace NSE.WebApp.MVC
     {
         public IConfiguration Configuration { get; }
 
-        public Startup( IHostingEnvironment hostEnvironment )
+        public Startup(IHostEnvironment hostEnvironment)
         {
             var builder = new ConfigurationBuilder()
                 .SetBasePath(hostEnvironment.ContentRootPath)
@@ -26,16 +27,18 @@ namespace NSE.WebApp.MVC
             Configuration = builder.Build();
         }
 
-        public void ConfigureServices( IServiceCollection services )
+        public void ConfigureServices(IServiceCollection services)
         {
             services.AddIdentityConfiguration();
+
             services.AddMvcConfiguration(Configuration);
-            services.RegisterServices();
+
+            services.RegisterServices(Configuration);
         }
 
-        public void Configure( IApplicationBuilder app, IWebHostEnvironment env )
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseMVCConfiguration(env);
+            app.UseMvcConfiguration(env);
         }
     }
 }

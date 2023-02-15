@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace NSE.Core.Messages.Integration
 {
     public class UsuarioRegistradoIntegrationEvent : IntegrationEvent
@@ -8,7 +9,7 @@ namespace NSE.Core.Messages.Integration
         public string Email { get; private set; }
         public string Cpf { get; private set; }
 
-        public UsuarioRegistradoIntegrationEvent( Guid id, string nome, string email, string cpf )
+        public UsuarioRegistradoIntegrationEvent(Guid id, string nome, string email, string cpf)
         {
             Id = id;
             Nome = nome;
@@ -17,4 +18,3 @@ namespace NSE.Core.Messages.Integration
         }
     }
 }
-

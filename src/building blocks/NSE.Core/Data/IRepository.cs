@@ -1,5 +1,5 @@
-﻿using NSE.Core.DomainObjects;
-using System;
+﻿using System;
+using NSE.Core.DomainObjects;
 
 namespace NSE.Core.Data
 {
@@ -8,4 +8,3 @@ namespace NSE.Core.Data
         IUnitOfWork UnitOfWork { get; }
     }
 }
-

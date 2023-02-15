@@ -1,9 +1,9 @@
-﻿using FluentValidation.Results;
+﻿using System.Collections.Generic;
+using System.Linq;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using NSE.Core.Communication;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace NSE.WebAPI.Core.Controllers
 {
@@ -12,27 +12,12 @@ namespace NSE.WebAPI.Core.Controllers
     {
         protected ICollection<string> Erros = new List<string>();
 
-        protected bool ResponsePossuiErros( ResponseResult resposta )
-        {
-            if (resposta == null || !resposta.Errors.Mensagens.Any()) return false;
-
-            foreach (var mensagem in resposta.Errors.Mensagens)
-                AdicionarErroProcessamento(mensagem);
-
-            return true;
-        }
-
-        protected ActionResult CustomResponse( ResponseResult resposta )
-        {
-            ResponsePossuiErros(resposta);
-
-            return CustomResponse();
-        }
-
-        protected ActionResult CustomResponse( object result = null )
+        protected ActionResult CustomResponse(object result = null)
         {
             if (OperacaoValida())
+            {
                 return Ok(result);
+            }
 
             return BadRequest(new ValidationProblemDetails(new Dictionary<string, string[]>
             {
@@ -40,22 +25,44 @@ namespace NSE.WebAPI.Core.Controllers
             }));
         }
 
-        protected ActionResult CustomResponse( ModelStateDictionary modelState )
+        protected ActionResult CustomResponse(ModelStateDictionary modelState)
         {
             var erros = modelState.Values.SelectMany(e => e.Errors);
-
             foreach (var erro in erros)
+            {
                 AdicionarErroProcessamento(erro.ErrorMessage);
+            }
 
             return CustomResponse();
         }
 
-        protected ActionResult CustomResponse( ValidationResult validationResult )
+        protected ActionResult CustomResponse(ValidationResult validationResult)
         {
             foreach (var erro in validationResult.Errors)
+            {
                 AdicionarErroProcessamento(erro.ErrorMessage);
+            }
 
             return CustomResponse();
+        }
+
+        protected ActionResult CustomResponse(ResponseResult resposta)
+        {
+            ResponsePossuiErros(resposta);
+
+            return CustomResponse();
+        }
+
+        protected bool ResponsePossuiErros(ResponseResult resposta)
+        {
+            if (resposta == null || !resposta.Errors.Mensagens.Any()) return false;
+
+            foreach (var mensagem in resposta.Errors.Mensagens)
+            {
+                AdicionarErroProcessamento(mensagem);
+            }
+
+            return true;
         }
 
         protected bool OperacaoValida()
@@ -63,7 +70,7 @@ namespace NSE.WebAPI.Core.Controllers
             return !Erros.Any();
         }
 
-        protected void AdicionarErroProcessamento( string erro )
+        protected void AdicionarErroProcessamento(string erro)
         {
             Erros.Add(erro);
         }
@@ -74,4 +81,3 @@ namespace NSE.WebAPI.Core.Controllers
         }
     }
 }
-

@@ -10,18 +10,17 @@ namespace NSE.Identidade.API.Configuration
 {
     public static class IdentityConfig
     {
-        public static IServiceCollection AddIdentityConfiguration( this IServiceCollection services, IConfiguration configuration )
+        public static IServiceCollection AddIdentityConfiguration(this IServiceCollection services,
+            IConfiguration configuration)
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<IdentityUser>()
-                .AddErrorDescriber<IdentityMensagensPortugues>()
                 .AddRoles<IdentityRole>()
+                .AddErrorDescriber<IdentityMensagensPortugues>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
-            services.AddApiConfiguration();
 
             services.AddJwtConfiguration(configuration);
 
@@ -29,4 +28,3 @@ namespace NSE.Identidade.API.Configuration
         }
     }
 }
-

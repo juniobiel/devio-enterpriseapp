@@ -2,51 +2,31 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <UserSecretsId>1a33a34e-9066-4f45-b414-67846d9b96c9</UserSecretsId>
+    <UserSecretsId>420a4d48-77b6-4c93-881d-5edd758def1b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>..\..\..</DockerfileContext>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Selfhosting Identidade - Development' " />
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.29" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.29" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.29" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.29" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.29">
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.29" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.29" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.29">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
-      <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.3" />
-      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.30" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Abstractions" Version="3.1.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.4.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Extensions\" />
-  </ItemGroup>
-
-
-  <ItemGroup>
-    <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
-    <None Remove="FluentValidation, Version=11.0.0.0, Culture=neutral, PublicKeyToken=7de548da2fbae0f0" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\building blocks\NSE.Core\NSE.Core.csproj" />
     <ProjectReference Include="..\..\building blocks\NSE.MessageBus\NSE.MessageBus.csproj" />
-    <ProjectReference Include="..\..\building blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
-    <ProjectReference Include="..\..\building blocks\NSE.Core\NSE.Core.csproj">
-      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
-    </ProjectReference>
+    <ProjectReference Include="..\..\building blocks\NSE.WebAPI.Core\NSE.WebAPI.Core.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Remove="Controllers\MainController.cs" />
-  </ItemGroup>
+
 </Project>

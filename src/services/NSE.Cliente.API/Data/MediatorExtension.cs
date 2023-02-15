@@ -24,7 +24,7 @@ namespace NSE.Clientes.API.Data
             var tasks = domainEvents
                 .Select(async ( domainEvent ) =>
                 {
-                    await mediator.PublicarEventos(domainEvent);
+                    await mediator.PublicarEvento(domainEvent);
                 });
 
             await Task.WhenAll(tasks);
