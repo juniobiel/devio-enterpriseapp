@@ -2,6 +2,11 @@
 
 Este repositório é destinado ao projeto trabalhado durante o curso Enterprise Applications da plataforma Desenvolvedor.io - Professor Eduardo Pires.
 
+Abordagem de microsserviços e aplicações corporativas.
+
+✅APIs REST
+✅GraphQL
+
 ## Setup do SQL Server via Docker
 
 1. Baixar a imagem do Sql Server
