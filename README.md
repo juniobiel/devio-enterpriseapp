@@ -6,6 +6,11 @@ Abordagem de microsserviços e aplicações corporativas.
 
 ✅APIs REST
 ✅GraphQL
+✅Microsserviços
+✅Gateway
+✅Back-end For Front-end (BFF)
+✅RabbitMQ
+✅Middleware (MediatoR)
 
 ## Setup do SQL Server via Docker
 
