@@ -4,14 +4,16 @@ Este repositório é destinado ao projeto trabalhado durante o curso Enterprise 
 
 Abordagem de microsserviços e aplicações corporativas.
 
-✅APIs REST
-✅GraphQL
-✅Microsserviços
-✅Gateway
-✅Back-end For Front-end (BFF)
+✅APIs REST  |
+✅GraphQL  |
+✅Microsserviços 
+
+✅Gateway  |
+✅Back-end For Front-end (BFF)  |
 ✅RabbitMQ
-✅Middleware (MediatoR)
-✅MSSQL Server
+
+✅Middleware (MediatoR)  |
+✅MSSQL Server  |
 ✅Docker Images
 
 ## Setup do SQL Server via Docker
