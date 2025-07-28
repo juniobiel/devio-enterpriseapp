@@ -11,6 +11,8 @@ Abordagem de microsserviços e aplicações corporativas.
 ✅Back-end For Front-end (BFF)
 ✅RabbitMQ
 ✅Middleware (MediatoR)
+✅MSSQL Server
+✅Docker Images
 
 ## Setup do SQL Server via Docker
 
